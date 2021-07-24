@@ -1,0 +1,15 @@
+tbody{
+  width:100%;
+}
+.list-container{
+  height: 100vh;
+  text-align: center;
+}
+.todo-title{
+  text-align: left;
+  text-transform: uppercase;
+  width: 90%;
+}
+.completed{
+  text-decoration: line-through;
+}
