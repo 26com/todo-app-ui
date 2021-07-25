@@ -23,13 +23,13 @@ export const addTodo = (title) => {
     })
 }
 
-export const editTodo = (id, title) => {
+export const editTodo = (id, data) => {
     return fetch(BASE_API_URL + '/' + id, {
     mode: 'cors',
     method: 'PUT',
     headers: {
     'Content-Type': 'application/json'
     },
-    body: JSON.stringify({title}),
+    body: JSON.stringify(data),
     })
 }

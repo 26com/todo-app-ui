@@ -1,11 +1,12 @@
 <template>
     <v-checkbox
       v-model="checkbox"
-      @change="change"
+      @change="changeData"
     ></v-checkbox>
 </template>
 
 <script>
+  import { editTodo } from '@/api/api'
   export default {
     data () {
       return {
@@ -17,16 +18,9 @@
       id: Number
     },
     methods: {
-      change(event){
-        fetch('http://todo-app/index.php/todos/' + this.id, {
-          mode: 'cors',
-          method: 'PUT',
-          headers: {
-          'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({completed: event}),
-        })
-        .then(() => this.$emit('todoListUpdated'))
+      changeData: async function(completed){
+        await editTodo(this.id, {completed})
+        this.$emit('todoListUpdated')
       }
     }
   }

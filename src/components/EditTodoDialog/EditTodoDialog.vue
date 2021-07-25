@@ -74,7 +74,7 @@ import { editTodo } from '@/api/api'
     },
     methods: {
       editData: async function(){
-        await editTodo(this.todo.id, this.title)
+        await editTodo(this.todo.id, {title: this.title})
         this.$emit('closeDialog')
         this.$emit('todoListUpdated')
       }
