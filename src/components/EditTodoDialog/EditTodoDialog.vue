@@ -48,7 +48,6 @@
 </template>
 
 <script>
-import { editTodo } from '@/api/api'
   export default {
     data(){
       return {
@@ -74,7 +73,7 @@ import { editTodo } from '@/api/api'
     },
     methods: {
       editData: async function(){
-        await editTodo(this.todo.id, {title: this.title})
+        await this.$store.dispatch('editTodo', { id: this.todo.id, data: {title: this.title}})
         this.$emit('closeDialog')
         this.$emit('todoListUpdated')
       }

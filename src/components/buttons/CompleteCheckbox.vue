@@ -6,7 +6,6 @@
 </template>
 
 <script>
-  import { editTodo } from '@/api/api'
   export default {
     data () {
       return {
@@ -19,7 +18,8 @@
     },
     methods: {
       changeData: async function(completed){
-        await editTodo(this.id, {completed})
+        console.log(completed);
+        await this.$store.dispatch('editTodo', {id: this.id, data: {completed}})
         this.$emit('todoListUpdated')
       }
     }

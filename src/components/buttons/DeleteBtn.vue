@@ -7,14 +7,13 @@
 </template>
 
 <script>
-import { deleteTodo } from '@/api/api'
 export default {
   props: {
     id: Number
   },
   methods: {
-    deleteData: async function(){
-      await deleteTodo(this.id)
+    async deleteData(){
+      await this.$store.dispatch('deleteTodo', this.id)
       this.$emit('todoListUpdated')
     }
   }

@@ -1,4 +1,4 @@
-import { addTodo } from '@/api/api'
+// import { addTodo } from '@/api/api'
 
 export default {
   data(){
@@ -8,7 +8,8 @@ export default {
   },
   methods: {
     addData: async function(){
-      await addTodo(this.newTodoTitle)
+      // await addTodo(this.newTodoTitle)
+      await this.$store.dispatch('createTodo', {title: this.newTodoTitle})
       this.newTodoTitle = ''
       this.$emit('todoListUpdated')
     }

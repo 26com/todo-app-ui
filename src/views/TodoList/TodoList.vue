@@ -10,7 +10,7 @@
         @todoListUpdated="getData"
       />
       <Loader v-if="loading" />
-      <h1 v-else-if="!todos.length">
+      <h1 v-else-if="!allTodos.length">
         NO TODOS
       </h1>
       <v-simple-table 
@@ -21,7 +21,7 @@
         <template v-slot:default>
           <tbody>
             <tr
-              v-for="todo in todos"
+              v-for="todo in allTodos"
               :key="todo.id"
             >
               <td>

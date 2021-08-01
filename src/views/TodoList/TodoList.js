@@ -4,14 +4,13 @@ import EditBtn from '@/components/buttons/EditBtn.vue'
 import CompleteCheckbox from '@/components/buttons/CompleteCheckbox.vue'
 import EditTodoDialog from '@/components/EditTodoDialog/EditTodoDialog.vue'
 import Loader from '@/components/Loader/Loader.vue'
-import { getTodos } from '@/api/api'
+
+import { mapGetters } from 'vuex'
 export default {
   data(){
     return {
-      loading: true,
       editTodo: {},
       editDialogOpen: false,
-      todos: [],
       headers: [
           { text: 'ID', 
             value: 'id', 
@@ -34,14 +33,13 @@ export default {
     DeleteBtn, EditBtn, CompleteCheckbox, EditTodoDialog, Loader, AddTodoField
   },
   methods: {
-    getData: async function(){
-      this.todos = await getTodos()
-      this.loading = false
+    async getData(){
+      await this.$store.dispatch('getTodos')
     },
     openEditDialog(todo){
-      console.log(todo.id);
       this.editTodo = todo
       this.editDialogOpen = true
     }
   },
+  computed: mapGetters(['allTodos', 'loading'])
 }
